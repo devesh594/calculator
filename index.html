@@ -11,7 +11,7 @@
       <div class="Calculator">
         <form>
           <div class="display">
-            <input type="text" name="display" />
+            <input type="text" name="display" id="display" />
           </div>
           <div>
             <input
@@ -85,5 +85,37 @@
         </form>
       </div>
     </div>
+
+    <script>
+      let displayRef = document.getElementById("display");
+      let operator = ["-", "+", "*", "/", "**", "%", "="];
+
+      document.onkeyup = function (e) {
+        if (e.keyCode == 8) {
+          displayRef.value = displayRef.value.slice(0, -1);
+        }
+
+        if ((e.key >= 0 && e.key <= 9) || operator.includes(e.key)) {
+          displayRef.value += e.key;
+          console.log(e.key, displayRef, displayRef.value);
+        }
+      };
+    </script>
   </body>
 </html>
+<!-- 
+key = [48,50,...];
+
+document.onkeypress = function (e) {
+    e = e || window.event;
+    // use e.keyCode
+};
+
+$(document).on("keypress", function (e) {
+    // use e.keyCode
+
+    if(key.includes(e.keyCode)) {
+        display.value += e.
+    }
+});
+-->
